@@ -11,7 +11,10 @@ import java.util.List;
 @RestController
 public class CustomerRestController {
 
-    @GetMapping(value = "/customer", produces = "application/json")
+    @GetMapping(
+            value = "/customer",
+            produces = { "application/json", "application/xml" }
+    )
     public ResponseEntity<Customer> getCustomer() {
 
         Customer c1 = new Customer(1, "John", "john@gmail.com");
@@ -31,13 +34,12 @@ public class CustomerRestController {
 
     @PostMapping(
             value = "/customer",
-            consumes = "application/json",
-            produces = "application/json"
+            consumes = { "application/json", "application/xml"},
+            produces = { "application/json", "application/xml" }
     )
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
 
         System.out.println(customer);
-
         // logic to save customer in DB
 
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
