@@ -1,1 +1,2 @@
-msg: this is page of config server of git MS
+app:
+  msg: "this is page of config server of git MS"
